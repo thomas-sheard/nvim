@@ -22,12 +22,20 @@ keymap('n', '<leader>c', vim.cmd.nohlsearch) -- clear search highlighting
 keymap('n', '<leader>e', vim.cmd.Ex) -- file explorer
 keymap('n', '<leader>u', ':UndotreeToggle<CR>') -- toggle undotree
 
+
 -- MOTIONS
 
 keymap('i', '<C-BS>', '<C-w>') -- control backspace deletes entire word
 
-keymap('n', 'j', 'gj') -- allow j / k to move within lines
-keymap('n', 'k', 'gk') -- for multiline text
+-- allow j / k to move within lines for multiline text
+
+keymap('n', 'j', function ()
+  return vim.v.count > 0 and 'j' or 'gj'
+end, { expr = true })
+
+keymap('n', 'k', function ()
+  return vim.v.count > 0 and 'k' or 'gk'
+end, { expr = true })
 
 keymap('v', 'J', ":m '>+1<CR>gv=gv") -- visual mode text shifting
 keymap('v', 'K', ":m '<-2<CR>gv=gv") -- using J / K (down, up)

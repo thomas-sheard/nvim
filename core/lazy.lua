@@ -33,17 +33,17 @@ require("lazy").setup({
 
   -- set lualine as statusline
 
---  {
---    'nvim-lualine/lualine.nvim',
---    opts = {
---      options = {
---        icons_enabled = false,
---        theme = 'onedark',
---        component_separators = '|',
---        section_separators = '',
---      },
---    },
---  },
+  {
+    'nvim-lualine/lualine.nvim',
+    opts = {
+      options = {
+        icons_enabled = false,
+        theme = 'onedark',
+        component_separators = '|',
+        section_separators = '',
+      },
+    },
+  },
 
   -- treesitter (syntax highlighter)
   {
@@ -51,5 +51,30 @@ require("lazy").setup({
     build = ':TSUpdate',
   },
 
+  -- lsp 
+  {
+    'neovim/nvim-lspconfig', -- core lsp functionality
+    dependencies = {
+      'williamboman/mason.nvim', -- lsp package manager
+      'williamboman/mason-lspconfig.nvim', -- bridge between mason and lspconfig
+    },
+  },
+
+  -- completion
+  {
+    'hrsh7th/nvim-cmp', -- completion engine
+    dependencies = {
+      'hrsh7th/cmp-nvim-lsp', -- lsp source
+      'hrsh7th/cmp-buffer', -- buffer completions
+      'hrsh7th/cmp-path', -- file path completions
+      'saadparwaiz1/cmp_luasnip', -- snippet completions (luasnip)
+    },
+  },
+
+
+  -- snippets
+  {
+    'L3MON4D3/LuaSnip'
+  },
 
 })
