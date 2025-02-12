@@ -11,14 +11,14 @@ cmp.setup {
 
     mapping = cmp.mapping.preset.insert {
 
-      -- enter completes selected or first snippet
-      ['<CR>'] = cmp.mapping.confirm {
+      -- enter completes selected suggestion
+      ['<Tab>'] = cmp.mapping.confirm {
         behavior = cmp.ConfirmBehavior.Replace,
-        select = true,
+        select = false,
       },
 
-      -- tab: traverses next item if menu is open, activates snippet traversal, or indents
-      ['<Tab>'] = cmp.mapping(function(fallback)
+      -- traverses next item if menu is open, activates snippet traversal, or indents
+      ['<C-j>'] = cmp.mapping(function(fallback)
         if cmp.visible() then
           cmp.select_next_item()
         elseif luasnip.expand_or_locally_jumpable() then
@@ -28,8 +28,8 @@ cmp.setup {
         end
       end, { 'i', 's' }),
 
-      -- the same as tab but backwards traversal
-      ['<S-Tab>'] = cmp.mapping(function(fallback)
+      -- the same as above but traverses backwards
+      ['<C-k>'] = cmp.mapping(function(fallback)
         if cmp.visible() then
           cmp.select_prev_item()
         elseif luasnip.locally_jumpable(-1) then
@@ -43,7 +43,7 @@ cmp.setup {
     sources = cmp.config.sources {
       { name = 'nvim_lsp' }, -- lsp suggestions. this is the big one
       { name = 'luasnip' }, -- luasnip snippet suggestions
---      { name = 'buffer' }, -- suggestions based on content in the active buffer. comment this out to remove plaintext suggestions
+      { name = 'buffer' }, -- suggestions based on content in the active buffer. comment this out to remove plaintext suggestions
       { name = 'path' }, -- suggestions when typing paths
     },
 }

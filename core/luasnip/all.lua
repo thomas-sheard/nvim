@@ -32,8 +32,9 @@ local fmta = require("luasnip.extras.fmt").fmta
 
 local as = ls.extend_decorator.apply(s, { snippetType = "autosnippet" })
 
-
 return {
+
+  s("hi", t("Hello world!")),
 
   as("\"", fmta(
   [[
