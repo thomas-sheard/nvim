@@ -34,7 +34,8 @@ local as = ls.extend_decorator.apply(s, { snippetType = "autosnippet" })
 
 return {
 
-  s("hi", t("Hello world!")),
+  s("ht", t("a html file")),
+
+  s("hi", t("Hello html!"))
 
 }
-

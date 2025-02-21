@@ -17,6 +17,7 @@ end
 
 vim.opt.rtp:prepend(lazypath)
 
+
 require("lazy").setup({
 
   -- aesthetics
@@ -75,6 +76,15 @@ require("lazy").setup({
   -- snippets
   {
     'L3MON4D3/LuaSnip'
+  },
+
+  {
+    "windwp/nvim-autopairs"
+  },
+
+  -- tabout
+  {
+    'abecodes/tabout.nvim'
   },
 
 })

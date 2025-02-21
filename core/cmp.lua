@@ -11,10 +11,10 @@ cmp.setup {
 
     mapping = cmp.mapping.preset.insert {
 
-      -- enter completes selected suggestion
+      -- tab completes selected suggestion
       ['<Tab>'] = cmp.mapping.confirm {
         behavior = cmp.ConfirmBehavior.Replace,
-        select = false,
+        select = true,
       },
 
       -- traverses next item if menu is open, activates snippet traversal, or indents
