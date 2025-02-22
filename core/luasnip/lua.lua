@@ -34,12 +34,6 @@ local as = ls.extend_decorator.apply(s, { snippetType = "autosnippet" })
 
 return {
 
-  as("<>", fmt([[
-  <{a}>{}</{a}>{}
-    ]], {
-      a = i(1, "env"), i(2), i(0)
-    }, {
-      repeat_duplicates = true
-    })),
 
 }
+

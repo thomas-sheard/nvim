@@ -11,33 +11,66 @@ cmp.setup {
 
     mapping = cmp.mapping.preset.insert {
 
-      -- tab completes selected suggestion
-      ['<Tab>'] = cmp.mapping.confirm {
+      -- C-CR will always expand a completion, even without selection
+      ['<C-CR>'] = cmp.mapping.confirm {
         behavior = cmp.ConfirmBehavior.Replace,
         select = true,
       },
 
-      -- traverses next item if menu is open, activates snippet traversal, or indents
-      ['<C-j>'] = cmp.mapping(function(fallback)
+      -- CR will expand a selected completion
+      ['<CR>'] = cmp.mapping(function (fallback)
+        if cmp.visible() and cmp.get_active_entry() then
+          cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false })
+         else
+           fallback()
+        end
+      end),
+
+      -- tab will expand a selected completion if there is one
+      -- else, it will jump forward in a snippet
+      -- else, it will fallback
+
+      ['<Tab>'] = function(fallback)
+        if cmp.visible() and cmp.get_active_entry() then
+          cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false })
+         elseif luasnip.expand_or_locally_jumpable() then
+           luasnip.expand_or_jump()
+         else
+           fallback()
+        end
+      end,
+
+      -- shift tab will jump back through a snippet
+      -- else, will fallback
+
+      ['<S-Tab>'] = function(fallback)
+        if luasnip.locally_jumpable(-1) then
+          luasnip.jump(-1)
+       else
+          fallback()
+        end
+      end,
+
+      -- C-j navigates down in cmp menu
+
+      ['<C-j>'] = cmp.mapping(function (fallback)
         if cmp.visible() then
           cmp.select_next_item()
-        elseif luasnip.expand_or_locally_jumpable() then
-          luasnip.expand_or_jump()
         else
           fallback()
         end
-      end, { 'i', 's' }),
+      end),
 
-      -- the same as above but traverses backwards
-      ['<C-k>'] = cmp.mapping(function(fallback)
+      -- C-k navigates up in cmp menu
+
+      ['<C-k>'] = cmp.mapping(function (fallback)
         if cmp.visible() then
           cmp.select_prev_item()
-        elseif luasnip.locally_jumpable(-1) then
-          luasnip.jump(-1)
         else
           fallback()
         end
-      end, { 'i', 's' }),
+      end),
+
     },
 
     sources = cmp.config.sources {

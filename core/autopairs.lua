@@ -1,6 +1,7 @@
 require("nvim-autopairs").setup({
   event = "InsertEnter",
   config = true,
+--  check_ts = false,
 })
 
 -- enables autopairs after a function completion

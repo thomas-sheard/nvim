@@ -75,7 +75,10 @@ require("lazy").setup({
 
   -- snippets
   {
-    'L3MON4D3/LuaSnip'
+    'L3MON4D3/LuaSnip',
+    keys = function()
+      return {}
+    end
   },
 
   {
@@ -84,7 +87,9 @@ require("lazy").setup({
 
   -- tabout
   {
-    'abecodes/tabout.nvim'
+    'abecodes/tabout.nvim',
+    event = 'InsertCharPre',
+    priority = 1000,
   },
 
 })
