@@ -13,10 +13,12 @@ require('tabout').setup{
     { open = '`', close = '`' },
     { open = '(', close = ')' },
     { open = '[', close = ']' },
-    { open = '{', close = '}' }
+    { open = '{', close = '}' },
+    { open = '$', close = '$' },
+    { open = "`", close = "'" }
   },
 
-  ignore_beginning = true,
+  ignore_beginning = false,
 
 }
 

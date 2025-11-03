@@ -66,8 +66,7 @@ vim.opt.spell = false -- no spellcheck by default (use ':set spell' and ':set no
 vim.opt.guicursor = "r-c-v-sm:block,i-ci-ve:ver25,n-cr-o:hor10"
 vim.opt.conceallevel = 2 -- level of syntax replacement, for example math symbol macros being replaced with the actual symbol unicode in a .tex file
 
--- vimtex
+-- disable autocomments on newline
 
-vim.g.vimtex_view_method = 'zathura' -- set default vimtex pdf viewer
-vim.g.vitex_quickfix_open_on_warning = 0
-vim.g.vimtex_view_forward_search_on_start = false
+vim.cmd('autocmd BufEnter * set formatoptions-=cro')
+vim.cmd('autocmd BufEnter * setlocal formatoptions-=cro')

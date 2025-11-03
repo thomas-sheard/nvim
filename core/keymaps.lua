@@ -19,13 +19,21 @@ keymap('n', '<leader>c', vim.cmd.nohlsearch) -- clear search highlighting
 
 -- NAVIGATION
 
-keymap('n', '<leader>e', vim.cmd.Ex) -- file explorer
+keymap('n', '<leader>o', "<cmd>Oil --float<CR>") -- floating file explorer
+keymap('n', '<C-o>', vim.cmd.Oil) -- dedicated explorer
 keymap('n', '<leader>u', ':UndotreeToggle<CR>') -- toggle undotree
 
+keymap('c', '<C-j>', '<C-n>')
+keymap('c', '<C-k>', '<C-p>')
+
+keymap("n", "<leader>e", "<cmd> lua vim.diagnostic.open_float() <CR>")
+keymap('n', '<leader>h>', '<S-K>')
 
 -- MOTIONS
 
 keymap('i', '<C-BS>', '<C-w>') -- control backspace deletes entire word
+
+--keymap('i', '<C-Del>', 'de') -- 
 
 -- allow j / k to move within lines for multiline text
 

@@ -2,7 +2,7 @@ vim.defer_fn(function()
   require('nvim-treesitter.configs').setup {
 
     -- languages treesitter should definitely have installed
-    ensure_installed = {'c', 'cpp', 'cmake', 'lua', 'python', 'r', 'rust', 'vimdoc', 'vim', 'bash', 'java', 'latex', 'query', 'html', 'markdown'},
+    ensure_installed = {'c', 'cpp', 'cmake', 'lua', 'python', 'r', 'rust', 'vimdoc', 'vim', 'bash', 'java', 'latex', 'query', 'html', 'markdown', "rnoweb", "yaml"},
 
     auto_install = true, -- auto-install missing buffers (set false if tree-sitter is not locally installed)
     sync_install = false, -- install ensure_installed synchronously

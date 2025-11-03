@@ -1,6 +1,7 @@
 local actions = require ('telescope.actions')
 local builtin = require('telescope.builtin')
 local utils = require('telescope.utils')
+local action_state = require('telescope.actions.state')
 
 require('telescope').setup{
 
@@ -8,7 +9,9 @@ require('telescope').setup{
     mappings = {
       i = {
         ["<C-j>"] = actions.move_selection_next, -- <C-j> / <C-k> navigates results
-        ["<C-k>"] = actions.move_selection_previous
+        ["<C-k>"] = actions.move_selection_previous,
+        ["<C-q>"] = actions.close,
+        ["<C-c>"] = actions.close,
       },
     },
   },
@@ -22,3 +25,4 @@ vim.keymap.set('n', '<leader>fb', builtin.buffers, {}) -- fb to search buffers (
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, {}) -- fh to search documentation ('find help')
 vim.keymap.set('n', '<leader>fe', function()builtin.diagnostics({bufnr=0})end, {}) -- fe to search lsp errors ('find errors')
 vim.keymap.set('n', '<leader>ft', builtin.treesitter, {}) -- ft to search treesitter (!)
+

@@ -7,6 +7,8 @@ require("core.lazy")
 
 require("core.treesitter")
 require("core.lsp")
+require("core.oil")
+require("core.telescope")
 
 require("core.cmp")
 require("core.luasnip")

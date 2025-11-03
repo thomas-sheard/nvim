@@ -21,14 +21,21 @@ lspconfig.lua_ls.setup {
 
 lspconfig.rust_analyzer.setup {}
 
+lspconfig.basedpyright.setup{}
+lspconfig.ruff.setup{}
+
 lspconfig.html.setup {
   capabilities = capabilities
 }
 
 lspconfig.texlab.setup {}
 
-lspconfig.r_language_server.setup {}
+lspconfig.r_language_server.setup {
+  cmd = { "R", "--no-echo", "-e", "languageserver::run()" },
+  filetypes = {"r", "rmd"}
+}
 
+lspconfig.hyprls.setup {}
 
 
 -- generic mason-lspconfig auto-setup from :h mason-lspconfig-automatic-server-setup
